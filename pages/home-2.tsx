@@ -19,7 +19,7 @@ const home_2 = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    document.documentElement.setAttribute("dir", 'ltr');
+    document.documentElement.setAttribute("dir", "ltr");
     document.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
         setScrolled(true);
@@ -33,15 +33,19 @@ const home_2 = () => {
   };
   return (
     <>
-    <Head>
+      <Head>
         <title>Itechex - IT Solution & Services HTML Template</title>
-        <meta name="description" content=" IT Solution & Services HTML Template" />
+        <meta
+          name="description"
+          content=" IT Solution & Services HTML Template"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div
         onClick={backtoTop}
-        className={`back-to-top ${scrolled ? "d-block" : "d-none"}`}>
+        className={`back-to-top ${scrolled ? "d-block" : "d-none"}`}
+      >
         <span className="back-top">
           <span className="material-symbols-outlined mat-icon fw-300 d-grid">
             {" "}

@@ -7,25 +7,46 @@ import {
 import Mobilemenu from "../Mobilemenu";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import {useState, useEffect} from 'react';
+import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetGlobalQuery } from "@/redux/features/globals/globalApi";
+import { setGlobalData } from "@/redux/features/globals/globalsSlice";
+import useViewImage from "@/lib/hooks/useViewImage";
+import { useGetHomeQuery } from "@/redux/features/home/homeApi";
+import { setHomeData } from "@/redux/features/home/homeSlice";
 
 const Navbar = () => {
-    const [mounted, setMounted] = useState(false)
-    const { theme, setTheme } = useTheme();
-    const inactiveTheme = theme === "light" ? "dark" : "light";
-    const openMobileMenu = () => {
-      document.body.classList.toggle("mobile-menu--toggle")
+  const { data, isLoading } = useGetGlobalQuery(null);
+  const { data: homeData } = useGetHomeQuery(null);
+  const { globalData } = useSelector((state: any) => state.global);
+  const { viewImg } = useViewImage();
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const inactiveTheme = theme === "light" ? "dark" : "light";
+  const openMobileMenu = () => {
+    document.body.classList.toggle("mobile-menu--toggle");
+  };
+  const dispatch = useDispatch();
+
+  useMemo(() => {
+    if (data?.data) {
+      dispatch(setGlobalData(data?.data));
     }
-    const {asPath} = useRouter()
-   
-    useEffect(() => {
-      setMounted(true)
-    }, [])
-    
-    if (!mounted) {
-      return null
+  }, [data?.data]);
+  useMemo(() => {
+    if (homeData?.data) {
+      dispatch(setHomeData(homeData?.data));
     }
+  }, [homeData?.data]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
   return (
     <>
       <Mobilemenu />
@@ -37,7 +58,8 @@ const Navbar = () => {
                 <li>
                   <Link
                     href="#"
-                    className="t-link group group-row group-xs align-items-center">
+                    className="t-link group group-row group-xs align-items-center"
+                  >
                     <span className="icon-box icon-box--xs circle bg-neutral-300">
                       <span className="material-symbols-rounded mat-icon size-20 fw-300 lh-1 clr-base">
                         {" "}
@@ -46,14 +68,15 @@ const Navbar = () => {
                     </span>
                     <span className="d-none d-xl-inline-block clr-heading">
                       {" "}
-                      demo@mail.com{" "}
+                      {globalData?.contact_header?.email}{" "}
                     </span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="#"
-                    className="t-link group group-row group-xs align-items-center">
+                    className="t-link group group-row group-xs align-items-center"
+                  >
                     <span className="icon-box icon-box--xs circle bg-neutral-300">
                       <span className="material-symbols-rounded mat-icon size-20 fw-300 lh-1 clr-base">
                         {" "}
@@ -62,14 +85,15 @@ const Navbar = () => {
                     </span>
                     <span className="d-none d-xl-inline-block clr-heading">
                       {" "}
-                      +7 (903) 880-91-85{" "}
+                      {globalData?.contact_header?.phone}{" "}
                     </span>
                   </Link>
                 </li>
                 <li className="t-be-md-0">
                   <Link
                     href="#"
-                    className="t-link group group-row group-xs align-items-center">
+                    className="t-link group group-row group-xs align-items-center"
+                  >
                     <span className="icon-box icon-box--xs circle bg-neutral-300">
                       <span className="material-symbols-rounded mat-icon size-20 fw-300 lh-1 clr-base">
                         {" "}
@@ -78,14 +102,15 @@ const Navbar = () => {
                     </span>
                     <span className="d-none d-xl-inline-block clr-heading">
                       {" "}
-                      Santa Ana, Illinois 85486{" "}
+                      {globalData?.contact_header?.address}{" "}
                     </span>
                   </Link>
                 </li>
                 <li className="ms-md-auto">
                   <Link
                     href="#"
-                    className="t-link group group-row group-xs align-items-center">
+                    className="t-link group group-row group-xs align-items-center"
+                  >
                     <span className="icon-box icon-box--xs circle bg-neutral-300">
                       <span className="material-symbols-rounded mat-icon size-20 fw-300 lh-1 clr-base">
                         {" "}
@@ -94,7 +119,7 @@ const Navbar = () => {
                     </span>
                     <span className="d-none d-xl-inline-block clr-heading">
                       {" "}
-                      08:00am-6:00pm{" "}
+                      {globalData?.contact_header?.schedule}{" "}
                     </span>
                   </Link>
                 </li>
@@ -102,29 +127,37 @@ const Navbar = () => {
                   <ul className="list list-xs list-row">
                     <li>
                       <Link
-                        href="#"
-                        className="t-link social-icon social-icon--xs clr-heading :clr-base lg-text">
+                        href={globalData?.contact_header?.facebook || "/"}
+                        target="_blank"
+                        className="t-link social-icon social-icon--xs clr-heading :clr-base lg-text"
+                      >
                         <FaFacebookF />
                       </Link>
                     </li>
                     <li>
                       <Link
-                        href="#"
-                        className="t-link social-icon social-icon--xs clr-heading :clr-base lg-text">
+                        href={globalData?.contact_header?.twitter || "/"}
+                        target="_blank"
+                        className="t-link social-icon social-icon--xs clr-heading :clr-base lg-text"
+                      >
                         <FaTwitter />
                       </Link>
                     </li>
                     <li>
                       <Link
-                        href="#"
-                        className="t-link social-icon social-icon--xs clr-heading :clr-base lg-text">
+                        href={globalData?.contact_header?.instagram || "/"}
+                        target="_blank"
+                        className="t-link social-icon social-icon--xs clr-heading :clr-base lg-text"
+                      >
                         <FaInstagram />
                       </Link>
                     </li>
                     <li>
                       <Link
-                        href="#"
-                        className="t-link social-icon social-icon--xs clr-heading :clr-base lg-text">
+                        href={globalData?.contact_header?.linkedin || "/"}
+                        target="_blank"
+                        className="t-link social-icon social-icon--xs clr-heading :clr-base lg-text"
+                      >
                         <FaLinkedinIn />
                       </Link>
                     </li>
@@ -148,21 +181,32 @@ const Navbar = () => {
                     <div className="col-12">
                       <div className="mobile-header__content">
                         {/* <!-- Logo  --> */}
-                        <Link href="/" className="logo">
+                        <Link href="/" className="logo pb-2">
                           <img
-                            src="/images/logo.png"
+                            src={viewImg(globalData?.logo)}
                             alt="image"
                             className="logo__img logo__dark"
+                            style={{
+                              maxHeight: "50px",
+                              objectFit: "contain",
+                            }}
                           />
                           <img
-                            src="/images/logo-light.png"
+                            src={viewImg(globalData?.logo)}
                             alt="image"
                             className="logo__img logo__light"
+                            style={{
+                              maxHeight: "50px",
+                              objectFit: "contain",
+                            }}
                           />
                         </Link>
                         {/* <!-- Logo end --> */}
                         {/* <!-- Mobile Menu Toggle  --> */}
-                        <button onClick={openMobileMenu} className="bttn bttn--sqr bttn--sqr-sm bttn--light bttn--rounded mobile-menu__toggler">
+                        <button
+                          onClick={openMobileMenu}
+                          className="bttn bttn--sqr bttn--sqr-sm bttn--light bttn--rounded mobile-menu__toggler"
+                        >
                           <span className="material-symbols-rounded mat-icon fw-300">
                             {" "}
                             menu{" "}
@@ -180,14 +224,22 @@ const Navbar = () => {
                 {/* <!-- Logo --> */}
                 <Link href="/" className="logo">
                   <img
-                    src="/images/logo.png"
+                    src={viewImg(globalData?.logo)}
                     alt="image"
                     className="logo__img logo__dark"
+                    style={{
+                      maxHeight: "50px",
+                      objectFit: "contain",
+                    }}
                   />
                   <img
-                    src="/images/logo-light.png"
+                    src={viewImg(globalData?.logo)}
                     alt="image"
                     className="logo__img logo__light"
+                    style={{
+                      maxHeight: "50px",
+                      objectFit: "contain",
+                    }}
                   />
                 </Link>
                 {/* <!-- Logo End --> */}
@@ -237,9 +289,7 @@ const Navbar = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link
-                          href="blog-details-1"
-                          className="sub-menu__link">
+                        <Link href="blog-details-1" className="sub-menu__link">
                           {" "}
                           Blog details{" "}
                         </Link>
@@ -261,7 +311,8 @@ const Navbar = () => {
                       <li>
                         <Link
                           href="service-details-1"
-                          className="sub-menu__link">
+                          className="sub-menu__link"
+                        >
                           {" "}
                           Service details{" "}
                         </Link>
@@ -286,9 +337,7 @@ const Navbar = () => {
                         </span>
                         <ul className="list mega-menu__list">
                           <li>
-                            <Link
-                              href="about-us-1"
-                              className="mega-menu__link">
+                            <Link href="about-us-1" className="mega-menu__link">
                               {" "}
                               About Us{" "}
                             </Link>
@@ -296,7 +345,8 @@ const Navbar = () => {
                           <li>
                             <Link
                               href="choose-us-1"
-                              className="mega-menu__link">
+                              className="mega-menu__link"
+                            >
                               {" "}
                               Why Choose Us{" "}
                             </Link>
@@ -304,7 +354,8 @@ const Navbar = () => {
                           <li>
                             <Link
                               href="case-study-1"
-                              className="mega-menu__link">
+                              className="mega-menu__link"
+                            >
                               {" "}
                               Case Study{" "}
                             </Link>
@@ -329,7 +380,8 @@ const Navbar = () => {
                           <li>
                             <Link
                               href="help-center"
-                              className="mega-menu__link">
+                              className="mega-menu__link"
+                            >
                               {" "}
                               Help Center{" "}
                             </Link>
@@ -337,7 +389,8 @@ const Navbar = () => {
                           <li>
                             <Link
                               href="getting-started"
-                              className="mega-menu__link">
+                              className="mega-menu__link"
+                            >
                               {" "}
                               Getting Started{" "}
                             </Link>
@@ -345,7 +398,8 @@ const Navbar = () => {
                           <li>
                             <Link
                               href="help-center-details"
-                              className="mega-menu__link">
+                              className="mega-menu__link"
+                            >
                               {" "}
                               Help Center Details{" "}
                             </Link>
@@ -358,15 +412,14 @@ const Navbar = () => {
                           <li>
                             <Link
                               href="case-study-details-1"
-                              className="mega-menu__link">
+                              className="mega-menu__link"
+                            >
                               {" "}
                               Case Study Details{" "}
                             </Link>
                           </li>
                           <li>
-                            <Link
-                              href="leadership"
-                              className="mega-menu__link">
+                            <Link href="leadership" className="mega-menu__link">
                               {" "}
                               Leadership Page{" "}
                             </Link>
@@ -374,7 +427,8 @@ const Navbar = () => {
                           <li>
                             <Link
                               href="leadership-page"
-                              className="mega-menu__link">
+                              className="mega-menu__link"
+                            >
                               {" "}
                               Leadership Details{" "}
                             </Link>
@@ -393,7 +447,8 @@ const Navbar = () => {
                           <li>
                             <Link
                               href="pricing-plan-1"
-                              className="mega-menu__link">
+                              className="mega-menu__link"
+                            >
                               {" "}
                               Pricing Plan{" "}
                             </Link>
@@ -407,7 +462,8 @@ const Navbar = () => {
                           <li>
                             <Link
                               href="coming-soon"
-                              className="mega-menu__link">
+                              className="mega-menu__link"
+                            >
                               {" "}
                               Coming Soon{" "}
                             </Link>
@@ -415,7 +471,8 @@ const Navbar = () => {
                           <li>
                             <Link
                               href="terms-condition"
-                              className="mega-menu__link">
+                              className="mega-menu__link"
+                            >
                               {" "}
                               Terms & Condition{" "}
                             </Link>
@@ -431,9 +488,10 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                  <button
+                    <button
                       className="dark-mode-toggle"
-                      onClick={() => setTheme(inactiveTheme)}>
+                      onClick={() => setTheme(inactiveTheme)}
+                    >
                       {theme != "light" ? (
                         <span className="dark-mode-toggle__light">
                           <span className="material-symbols-rounded mat-icon">
@@ -454,7 +512,8 @@ const Navbar = () => {
                   <li>
                     <Link
                       href="pricing-plan-1"
-                      className="bttn bttn--base bttn-sm bttn-pill fw-md flex-shrink-0">
+                      className="bttn bttn--base bttn-sm bttn-pill fw-md flex-shrink-0"
+                    >
                       {" "}
                       Free Quote{" "}
                     </Link>

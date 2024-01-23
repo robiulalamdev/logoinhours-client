@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { ThemeProvider } from "next-themes";
 import Layout from "../components/layout";
 import type { NextComponentType, NextPageContext } from "next";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 type ComponentWithLayout = {
   getLayout?: (page: React.ReactNode) => JSX.Element;
 } & NextComponentType<NextPageContext, any, AppProps["pageProps"]>;
@@ -17,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   if ((Component as ComponentWithLayout).getLayout) {
     return (
-      <>
+      <Provider store={store}>
         {isLoading ? (
           <div className="preloader">
             <div className="preloader__img">
@@ -28,14 +30,16 @@ export default function App({ Component, pageProps }: AppProps) {
         <ThemeProvider enableSystem={false}>
           <Component {...pageProps} />
         </ThemeProvider>
-      </>
+      </Provider>
     );
   }
   return (
-    <ThemeProvider enableSystem={false}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider enableSystem={false}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </Provider>
   );
 }
