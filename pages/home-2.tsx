@@ -32,56 +32,57 @@ const home_2 = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   return (
-    <>
-      <Head>
-        <title>Itechex - IT Solution & Services HTML Template</title>
-        <meta
-          name="description"
-          content=" IT Solution & Services HTML Template"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div
-        onClick={backtoTop}
-        className={`back-to-top ${scrolled ? "d-block" : "d-none"}`}
-      >
-        <span className="back-top">
-          <span className="material-symbols-outlined mat-icon fw-300 d-grid">
-            {" "}
-            keyboard_double_arrow_up{" "}
-          </span>
-        </span>
-      </div>
-      {/* Navbar Section */}
-      <Navbar />
-      {/* Hero Section */}
-      <Hero />
-      {/* Brand Section */}
-      <Brand />
-      {/* Service section */}
-      <Service />
-      {/* About Section */}
-      <About />
-      {/* <!-- About Company 3 --> */}
-      <AboutCompany />
-      {/* <!-- Consult Section  --> */}
-      <Consult />
-      {/* <!-- Features section --> */}
-      <Features />
-      {/*  Work Process Section  --> */}
-      <Workprocess />
-      {/* <!-- Service Section  --> */}
-      <ServiceTab />
-      {/* <!-- Pricing Section  --> */}
-      <Pricing />
-      {/*  Team Section  --> */}
-      <Team />
-      {/*  Testimonial Section  --> */}
-      <Testimonail />
-      {/*  Footer --> */}
-      <Footer />
-    </>
+    <></>
+    // <>
+    //   <Head>
+    //     <title>Itechex - IT Solution & Services HTML Template</title>
+    //     <meta
+    //       name="description"
+    //       content=" IT Solution & Services HTML Template"
+    //     />
+    //     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    //     <link rel="icon" href="/favicon.ico" />
+    //   </Head>
+    //   <div
+    //     onClick={backtoTop}
+    //     className={`back-to-top ${scrolled ? "d-block" : "d-none"}`}
+    //   >
+    //     <span className="back-top">
+    //       <span className="material-symbols-outlined mat-icon fw-300 d-grid">
+    //         {" "}
+    //         keyboard_double_arrow_up{" "}
+    //       </span>
+    //     </span>
+    //   </div>
+    //   {/* Navbar Section */}
+    //   <Navbar />
+    //   {/* Hero Section */}
+    //   <Hero  />
+    //   {/* Brand Section */}
+    //   <Brand />
+    //   {/* Service section */}
+    //   <Service />
+    //   {/* About Section */}
+    //   <About />
+    //   {/* <!-- About Company 3 --> */}
+    //   <AboutCompany />
+    //   {/* <!-- Consult Section  --> */}
+    //   <Consult />
+    //   {/* <!-- Features section --> */}
+    //   <Features />
+    //   {/*  Work Process Section  --> */}
+    //   <Workprocess />
+    //   {/* <!-- Service Section  --> */}
+    //   <ServiceTab />
+    //   {/* <!-- Pricing Section  --> */}
+    //   <Pricing />
+    //   {/*  Team Section  --> */}
+    //   <Team />
+    //   {/*  Testimonial Section  --> */}
+    //   <Testimonail />
+    //   {/*  Footer --> */}
+    //   <Footer />
+    // </>
   );
 };
 
