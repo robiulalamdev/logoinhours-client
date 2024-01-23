@@ -65,7 +65,7 @@ export default function Home() {
       {/* Service section */}
       <Service data={homeData?.professional_it_services} />
       {/* About Section */}
-      <About />
+      <About data={homeData?.boost_creativity} />
       {/* <!-- About Company 3 --> */}
       <AboutCompany />
 

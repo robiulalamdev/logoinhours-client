@@ -45,7 +45,7 @@ const Service = ({ data }) => {
                 </p>
                 <Link href="service-1" className="t-link t-link--base fw-md">
                   {" "}
-                  Discover Now{" "}
+                  {data?.button_title}{" "}
                   <span className="material-symbols-outlined mat-icon fw-200">
                     {" "}
                     trending_flat{" "}
@@ -71,7 +71,7 @@ const Service = ({ data }) => {
                 </p>
                 <Link href="service-1" className="t-link t-link--base fw-md">
                   {" "}
-                  Discover Now{" "}
+                  {data?.button_title}{" "}
                   <span className="material-symbols-outlined mat-icon fw-200">
                     {" "}
                     trending_flat{" "}
@@ -97,7 +97,7 @@ const Service = ({ data }) => {
                 </p>
                 <Link href="service-1" className="t-link t-link--base fw-md">
                   {" "}
-                  Discover Now{" "}
+                  {data?.button_title}{" "}
                   <span className="material-symbols-outlined mat-icon fw-200">
                     {" "}
                     trending_flat{" "}
