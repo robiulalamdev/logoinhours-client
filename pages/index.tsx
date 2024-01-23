@@ -63,7 +63,7 @@ export default function Home() {
       <Hero data={homeData?.hero_section} />
 
       {/* Service section */}
-      <Service />
+      <Service data={homeData?.professional_it_services} />
       {/* About Section */}
       <About />
       {/* <!-- About Company 3 --> */}

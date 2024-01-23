@@ -10,7 +10,7 @@ import useViewImage from "@/lib/hooks/useViewImage";
 const Hero = ({ data }) => {
   const { viewImg } = useViewImage();
   const [isOpen, setOpen] = useState(false);
-  console.log(data);
+  // console.log(data);
   return (
     <Swiper
       dir="ltr"
