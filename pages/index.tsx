@@ -67,7 +67,7 @@ export default function Home() {
       {/* About Section */}
       <About data={homeData?.boost_creativity} />
       {/* <!-- About Company 3 --> */}
-      <AboutCompany />
+      <AboutCompany data={homeData?.stand_out} />
 
       {/* Brand Section */}
       {homeData?.companies && <Brand data={homeData?.companies} />}
