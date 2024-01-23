@@ -61,14 +61,17 @@ export default function Home() {
       <Navbar />
       {/* Hero Section */}
       <Hero data={homeData?.hero_section} />
-      {/* Brand Section */}
-      <Brand />
+
       {/* Service section */}
       <Service />
       {/* About Section */}
       <About />
       {/* <!-- About Company 3 --> */}
       <AboutCompany />
+
+      {/* Brand Section */}
+      {homeData?.companies && <Brand data={homeData?.companies} />}
+
       {/* <!-- Consult Section  --> */}
       <Consult />
       {/* <!-- Features section --> */}
