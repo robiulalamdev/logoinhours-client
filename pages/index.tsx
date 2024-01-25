@@ -15,6 +15,8 @@ import Testimonail from "@/components/home_2/Testimonail";
 import Workprocess from "@/components/home_2/Workprocess";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import WorkProcess from "@/components/home_2/WorkProccess";
+import CompanyLocation from "@/components/home_2/CompanyLocation";
 
 export default function Home() {
   const { globalData } = useSelector((state: any) => state.global);
@@ -73,19 +75,34 @@ export default function Home() {
       {homeData?.companies && <Brand data={homeData?.companies} />}
 
       {/* <!-- Consult Section  --> */}
-      <Consult />
+      {homeData?.appointment && <Consult data={homeData?.appointment} />}
+
       {/* <!-- Features section --> */}
-      <Features />
+      {homeData?.it_solutions && <Features data={homeData?.it_solutions} />}
+
       {/*  Work Process Section  --> */}
-      <Workprocess />
+      {homeData?.about_our_work && (
+        <Workprocess data={homeData?.about_our_work} />
+      )}
+
       {/* <!-- Service Section  --> */}
-      <ServiceTab />
+      {homeData?.complete_projects && (
+        <ServiceTab data={homeData?.complete_projects} />
+      )}
+      {homeData?.work_process && <WorkProcess data={homeData?.work_process} />}
+
       {/* <!-- Pricing Section  --> */}
-      <Pricing />
+      {/* <Pricing /> */}
       {/*  Team Section  --> */}
-      <Team />
+      {homeData?.about_company && (
+        <CompanyLocation data={homeData?.about_company} />
+      )}
+
       {/*  Testimonial Section  --> */}
-      <Testimonail />
+      {homeData?.client_reviews && (
+        <Testimonail data={homeData?.client_reviews} />
+      )}
+
       {/*  Footer --> */}
       <Footer />
     </>
