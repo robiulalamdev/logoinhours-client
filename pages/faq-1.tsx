@@ -101,16 +101,18 @@ const faq_1 = () => {
                 <li>
                   <Link
                     href="/"
-                    className="d-inline-block t-link clr-light :clr-accent">
+                    className="d-inline-block t-link clr-light :clr-accent"
+                  >
                     {" "}
                     Home{" "}
                   </Link>
                 </li>
-               
+
                 <li className="">
                   <Link
                     href="#"
-                    className="d-inline-block t-link clr-light :clr-accent">
+                    className="d-inline-block t-link clr-light :clr-accent"
+                  >
                     {" "}
                     FAQ{" "}
                   </Link>
@@ -118,7 +120,8 @@ const faq_1 = () => {
                 <li className="d-none">
                   <Link
                     href="#"
-                    className="d-inline-block t-link clr-light :clr-accent"></Link>
+                    className="d-inline-block t-link clr-light :clr-accent"
+                  ></Link>
                 </li>
               </ul>
             </div>
@@ -143,7 +146,8 @@ const faq_1 = () => {
                 </p>
                 <Link
                   href="contact-us-1"
-                  className="bttn bttn--base bttn-md gap-2 bttn-pill fw-md">
+                  className="bttn bttn--base bttn-md gap-2 bttn-pill fw-md"
+                >
                   {" "}
                   Contact Us{" "}
                   <span className="material-symbols-rounded mat-icon size-16 fw-400 bttn__icon-cover d-flex align-items-center">
@@ -159,7 +163,8 @@ const faq_1 = () => {
                   <div key={id} className="custom-accordion__item">
                     <div
                       className="custom-accordion__header"
-                      onClick={() => handleOpen(id)}>
+                      onClick={() => handleOpen(id)}
+                    >
                       <div className="d-flex gap-4 align-items-center flex-grow-1">
                         <img
                           src="/images/icon-59.png"
@@ -177,7 +182,8 @@ const faq_1 = () => {
                     </div>
                     <div
                       className={`custom-accordion__body`}
-                      style={id == active ? opened : closed}>
+                      style={id == active ? opened : closed}
+                    >
                       <div className="custom-accordion__content">
                         <p> {answer} </p>
                       </div>
@@ -221,7 +227,8 @@ const faq_1 = () => {
                     <div key={id} className="custom-accordion__item">
                       <div
                         className="custom-accordion__header"
-                        onClick={() => handleOpen1(id)}>
+                        onClick={() => handleOpen1(id)}
+                      >
                         <div className="d-flex gap-4 align-items-center flex-grow-1">
                           <img
                             src="/images/icon-59.png"
@@ -239,7 +246,8 @@ const faq_1 = () => {
                       </div>
                       <div
                         className={`custom-accordion__body`}
-                        style={id == active1 ? opened : closed}>
+                        style={id == active1 ? opened : closed}
+                      >
                         <div className="custom-accordion__content">
                           <p> {answer} </p>
                         </div>
@@ -260,7 +268,7 @@ const faq_1 = () => {
         </div>
       </div>
       {/* <!-- Consult Section  --> */}
-      <Consult />
+      <Consult data={null} />
       {/* <!-- Resource Section --> */}
       <div className="section">
         <div className="section__gap-bottom">
@@ -295,7 +303,8 @@ const faq_1 = () => {
                   <h5 className="mb-2">
                     <Link
                       href="blog-details-1"
-                      className="t-link d-block clr-heading :clr-base d-block">
+                      className="t-link d-block clr-heading :clr-base d-block"
+                    >
                       {" "}
                       Flutter Handbook{" "}
                     </Link>
@@ -317,7 +326,8 @@ const faq_1 = () => {
                   <h5 className="mb-2">
                     <Link
                       href="blog-details-1"
-                      className="t-link d-block clr-heading :clr-base d-block">
+                      className="t-link d-block clr-heading :clr-base d-block"
+                    >
                       {" "}
                       Culture Book 2022{" "}
                     </Link>
@@ -339,7 +349,8 @@ const faq_1 = () => {
                   <h5 className="mb-2">
                     <Link
                       href="blog-details-1"
-                      className="t-link d-block clr-heading :clr-base d-block">
+                      className="t-link d-block clr-heading :clr-base d-block"
+                    >
                       {" "}
                       UX Trend Book{" "}
                     </Link>
