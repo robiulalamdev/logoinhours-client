@@ -1,7 +1,13 @@
+import useViewImage from "@/lib/hooks/useViewImage";
 import Link from "next/link";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Service = ({ data }) => {
+  const { categories } = useSelector((state: any) => state.global);
+  const { viewImg } = useViewImage();
+
+  console.log(categories);
   return (
     <section className="section">
       <div className="section__gap-bottom">
@@ -29,111 +35,130 @@ const Service = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="container">
-        <div className="row g-4 justify-content-center">
-          <div className="col-md-6 col-lg-4">
-            <div className="service-card service-card--1">
-              <div className="icon-box icon-box--md circle bg-base flex-shrink-0">
-                <img src="/images/icon-1.png" alt="image" />
+      {categories?.length > 0 && (
+        <>
+          <div className="container">
+            <div className="row g-4 justify-content-center">
+              {categories?.slice(0, 3)?.map((cate: any, index: number) => (
+                <div key={index} className="col-md-6 col-lg-4">
+                  <div className="service-card service-card--1">
+                    <div className="icon-box icon-box--md circle bg-base flex-shrink-0">
+                      <img src={viewImg(cate?.image)} alt="image" />
+                    </div>
+                    <div className="flex-grow-1">
+                      <h5 className="mb-2">{cate?.name}</h5>
+                      <p className="mb-5">
+                        {cate?.description?.length > 150
+                          ? cate?.description?.slice(0, 150) + "..."
+                          : cate?.description}
+                      </p>
+                      <Link
+                        href="service-1"
+                        className="t-link t-link--base fw-md"
+                      >
+                        {" "}
+                        {data?.button_title}{" "}
+                        <span className="material-symbols-outlined mat-icon fw-200">
+                          {" "}
+                          trending_flat{" "}
+                        </span>
+                      </Link>
+                      <div className="service-card__number mt-5">
+                        <span className="service-card__number-is h5">
+                          {" "}
+                          0{index + 1}{" "}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* <div className="col-md-6 col-lg-4">
+                <div className="service-card service-card--1 h-100">
+                  <div className="icon-box icon-box--md circle bg-danger flex-shrink-0">
+                    <img src="/images/icon-2.png" alt="image" />
+                  </div>
+                  <div className="flex-grow-1">
+                    <h5 className="mb-2">Web Development</h5>
+                    <p className="mb-5">
+                      {" "}
+                      We provide the most responsive and functional IT solution
+                      to enterprises and businesses all around the globe.{" "}
+                    </p>
+                    <Link
+                      href="service-1"
+                      className="t-link t-link--base fw-md"
+                    >
+                      {" "}
+                      {data?.button_title}{" "}
+                      <span className="material-symbols-outlined mat-icon fw-200">
+                        {" "}
+                        trending_flat{" "}
+                      </span>
+                    </Link>
+                    <div className="service-card__number mt-5">
+                      <span className="service-card__number-is h5"> 02 </span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="flex-grow-1">
-                <h5 className="mb-2">IT Solution</h5>
-                <p className="mb-5">
-                  {" "}
-                  We provide the most responsive and functional IT solution to
-                  enterprises and businesses all around the globe.{" "}
-                </p>
-                <Link href="service-1" className="t-link t-link--base fw-md">
-                  {" "}
-                  {data?.button_title}{" "}
-                  <span className="material-symbols-outlined mat-icon fw-200">
-                    {" "}
-                    trending_flat{" "}
-                  </span>
-                </Link>
-                <div className="service-card__number mt-5">
-                  <span className="service-card__number-is h5"> 01 </span>
+              <div className="col-lg-4">
+                <div className="service-card service-card--1">
+                  <div className="icon-box icon-box--md circle bg-success flex-shrink-0">
+                    <img src="/images/icon-3.png" alt="image" />
+                  </div>
+                  <div className="flex-grow-1">
+                    <h5 className="mb-2">Networking Services</h5>
+                    <p className="mb-5">
+                      {" "}
+                      We provide the most responsive and functional IT solution
+                      to enterprises and businesses all around the globe.{" "}
+                    </p>
+                    <Link
+                      href="service-1"
+                      className="t-link t-link--base fw-md"
+                    >
+                      {" "}
+                      {data?.button_title}{" "}
+                      <span className="material-symbols-outlined mat-icon fw-200">
+                        {" "}
+                        trending_flat{" "}
+                      </span>
+                    </Link>
+                    <div className="service-card__number mt-5">
+                      <span className="service-card__number-is h5"> 03 </span>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
+            </div>
+          </div>
+          <div className="section__gap-top">
+            <div className="container">
+              <div className="row justify-content-center">
+                <div className="col-md-10 col-xl-8">
+                  <div className="group group-row flex-wrap justify-content-center align-items-center">
+                    <Link
+                      href="service-1"
+                      className="bttn bttn--base bttn-md bttn-pill fw-md flex-shrink-0"
+                    >
+                      {" "}
+                      More Service{" "}
+                    </Link>
+                    <Link
+                      href="contact-us-1"
+                      className="bttn bttn--stroke-outline bttn-md bttn-pill fw-md flex-shrink-0 align-items-center"
+                    >
+                      <span className="bttn__arrow"> Contact Us Now </span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-md-6 col-lg-4">
-            <div className="service-card service-card--1 h-100">
-              <div className="icon-box icon-box--md circle bg-danger flex-shrink-0">
-                <img src="/images/icon-2.png" alt="image" />
-              </div>
-              <div className="flex-grow-1">
-                <h5 className="mb-2">Web Development</h5>
-                <p className="mb-5">
-                  {" "}
-                  We provide the most responsive and functional IT solution to
-                  enterprises and businesses all around the globe.{" "}
-                </p>
-                <Link href="service-1" className="t-link t-link--base fw-md">
-                  {" "}
-                  {data?.button_title}{" "}
-                  <span className="material-symbols-outlined mat-icon fw-200">
-                    {" "}
-                    trending_flat{" "}
-                  </span>
-                </Link>
-                <div className="service-card__number mt-5">
-                  <span className="service-card__number-is h5"> 02 </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4">
-            <div className="service-card service-card--1">
-              <div className="icon-box icon-box--md circle bg-success flex-shrink-0">
-                <img src="/images/icon-3.png" alt="image" />
-              </div>
-              <div className="flex-grow-1">
-                <h5 className="mb-2">Networking Services</h5>
-                <p className="mb-5">
-                  {" "}
-                  We provide the most responsive and functional IT solution to
-                  enterprises and businesses all around the globe.{" "}
-                </p>
-                <Link href="service-1" className="t-link t-link--base fw-md">
-                  {" "}
-                  {data?.button_title}{" "}
-                  <span className="material-symbols-outlined mat-icon fw-200">
-                    {" "}
-                    trending_flat{" "}
-                  </span>
-                </Link>
-                <div className="service-card__number mt-5">
-                  <span className="service-card__number-is h5"> 03 </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="section__gap-top">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-md-10 col-xl-8">
-              <div className="group group-row flex-wrap justify-content-center align-items-center">
-                <Link
-                  href="service-1"
-                  className="bttn bttn--base bttn-md bttn-pill fw-md flex-shrink-0"
-                >
-                  {" "}
-                  More Service{" "}
-                </Link>
-                <Link
-                  href="contact-us-1"
-                  className="bttn bttn--stroke-outline bttn-md bttn-pill fw-md flex-shrink-0 align-items-center"
-                >
-                  <span className="bttn__arrow"> Contact Us Now </span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </section>
   );
 };

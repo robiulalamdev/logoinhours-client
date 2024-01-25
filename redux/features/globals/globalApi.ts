@@ -15,7 +15,16 @@ const globalApi = api.injectEndpoints({
       query: () => `/global`,
       providesTags: ["global"],
     }),
+
+    getCategories: builder.query({
+      query: () => `/categories`,
+      providesTags: ["global"],
+    }),
   }),
 });
 
-export const { useToggleGlobalMutation, useGetGlobalQuery } = globalApi;
+export const {
+  useToggleGlobalMutation,
+  useGetGlobalQuery,
+  useGetCategoriesQuery,
+} = globalApi;

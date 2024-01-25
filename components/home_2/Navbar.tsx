@@ -10,8 +10,14 @@ import Link from "next/link";
 import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetGlobalQuery } from "@/redux/features/globals/globalApi";
-import { setGlobalData } from "@/redux/features/globals/globalsSlice";
+import {
+  useGetCategoriesQuery,
+  useGetGlobalQuery,
+} from "@/redux/features/globals/globalApi";
+import {
+  setCategories,
+  setGlobalData,
+} from "@/redux/features/globals/globalsSlice";
 import useViewImage from "@/lib/hooks/useViewImage";
 import { useGetHomeQuery } from "@/redux/features/home/homeApi";
 import { setHomeData } from "@/redux/features/home/homeSlice";
@@ -19,6 +25,7 @@ import { setHomeData } from "@/redux/features/home/homeSlice";
 const Navbar = () => {
   const { data, isLoading } = useGetGlobalQuery(null);
   const { data: homeData } = useGetHomeQuery(null);
+  const { data: categoryData } = useGetCategoriesQuery(null);
   const { globalData } = useSelector((state: any) => state.global);
   const { viewImg } = useViewImage();
   const [mounted, setMounted] = useState(false);
@@ -39,6 +46,12 @@ const Navbar = () => {
       dispatch(setHomeData(homeData?.data));
     }
   }, [homeData?.data]);
+
+  useMemo(() => {
+    if (homeData?.data) {
+      dispatch(setCategories(categoryData?.data));
+    }
+  }, [categoryData?.data]);
 
   useEffect(() => {
     setMounted(true);
