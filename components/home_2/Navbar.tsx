@@ -13,10 +13,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   useGetCategoriesQuery,
   useGetGlobalQuery,
+  useGetReviewsQuery,
 } from "@/redux/features/globals/globalApi";
 import {
   setCategories,
   setGlobalData,
+  setReviews,
 } from "@/redux/features/globals/globalsSlice";
 import useViewImage from "@/lib/hooks/useViewImage";
 import { useGetHomeQuery } from "@/redux/features/home/homeApi";
@@ -26,6 +28,7 @@ const Navbar = () => {
   const { data, isLoading } = useGetGlobalQuery(null);
   const { data: homeData } = useGetHomeQuery(null);
   const { data: categoryData } = useGetCategoriesQuery(null);
+  const { data: reviewData } = useGetReviewsQuery(null);
   const { globalData } = useSelector((state: any) => state.global);
   const { viewImg } = useViewImage();
   const [mounted, setMounted] = useState(false);
@@ -48,10 +51,16 @@ const Navbar = () => {
   }, [homeData?.data]);
 
   useMemo(() => {
-    if (homeData?.data) {
+    if (categoryData?.data) {
       dispatch(setCategories(categoryData?.data));
     }
   }, [categoryData?.data]);
+
+  useMemo(() => {
+    if (reviewData?.data) {
+      dispatch(setReviews(reviewData?.data));
+    }
+  }, [reviewData?.data]);
 
   useEffect(() => {
     setMounted(true);

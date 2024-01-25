@@ -3,6 +3,8 @@ import { Autoplay, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import Star from "../Star";
+import { useSelector } from "react-redux";
+import useViewImage from "@/lib/hooks/useViewImage";
 const feedbackData = [
   {
     id: 1,
@@ -31,6 +33,8 @@ const feedbackData = [
 ];
 
 const Testimonail = ({ data }) => {
+  const { reviews } = useSelector((state: any) => state.global);
+  const { viewImg } = useViewImage();
   return (
     <div className="section">
       <div className="section__gap-bottom">
@@ -56,62 +60,66 @@ const Testimonail = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-12">
-            <div className="feedback-slider-2">
-              <Swiper
-                dir="ltr"
-                slidesPerView="auto"
-                loop={true}
-                navigation={{
-                  nextEl: ".feedback-slider-2__btn.swiper-button-next",
-                  prevEl: ".feedback-slider-2__btn.swiper-button-prev",
-                }}
-                breakpoints={{
-                  0: {
-                    slidesPerView: 1,
-                  },
-                  992: {
-                    slidesPerView: 2,
-                  },
-                }}
-                autoplay={true}
-                modules={[Autoplay, Navigation]}
-              >
-                {feedbackData.map(({ id, company, img, name, review }) => (
-                  <SwiperSlide key={id}>
-                    <div className=" px-3 px-md-4">
-                      <div className="feedback-card-1">
-                        <Star />
-                        <p>{review}</p>
-                        <hr className="hr" />
-                        <div className="group group-md group-row align-items-center">
-                          <div className="user user--xmd user-outline-base flex-shrink-0 rounded-circle">
-                            <span className="user__img rounded-circle">
-                              <img
-                                src={img}
-                                alt="image"
-                                className="user__img-is"
-                              />
-                            </span>
-                          </div>
-                          <div className="flex-grow-1">
-                            <h5 className="mb-1">{name}</h5>
-                            <p className="sm-text">{company}</p>
+      {reviews?.length > 0 && (
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12">
+              <div className="feedback-slider-2">
+                <Swiper
+                  dir="ltr"
+                  slidesPerView="auto"
+                  loop={true}
+                  navigation={{
+                    nextEl: ".feedback-slider-2__btn.swiper-button-next",
+                    prevEl: ".feedback-slider-2__btn.swiper-button-prev",
+                  }}
+                  breakpoints={{
+                    0: {
+                      slidesPerView: 1,
+                    },
+                    992: {
+                      slidesPerView: 2,
+                    },
+                  }}
+                  autoplay={true}
+                  modules={[Autoplay, Navigation]}
+                >
+                  {reviews?.map(
+                    ({ id, company, image, name, message, rating }) => (
+                      <SwiperSlide key={id}>
+                        <div className=" px-3 px-md-4">
+                          <div className="feedback-card-1">
+                            <Star rating={rating} />
+                            <p>{message}</p>
+                            <hr className="hr" />
+                            <div className="group group-md group-row align-items-center">
+                              <div className="user user--xmd user-outline-base flex-shrink-0 rounded-circle">
+                                <span className="user__img rounded-circle">
+                                  <img
+                                    src={viewImg(image)}
+                                    alt="image"
+                                    className="user__img-is"
+                                  />
+                                </span>
+                              </div>
+                              <div className="flex-grow-1">
+                                <h5 className="mb-1">{name}</h5>
+                                <p className="sm-text">{company}</p>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-              <div className="feedback-slider-2__btn swiper-button-prev"></div>
-              <div className="feedback-slider-2__btn swiper-button-next"></div>
+                      </SwiperSlide>
+                    )
+                  )}
+                </Swiper>
+                <div className="feedback-slider-2__btn swiper-button-prev"></div>
+                <div className="feedback-slider-2__btn swiper-button-next"></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

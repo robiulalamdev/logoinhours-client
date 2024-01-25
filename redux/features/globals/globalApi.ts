@@ -20,6 +20,11 @@ const globalApi = api.injectEndpoints({
       query: () => `/categories`,
       providesTags: ["global"],
     }),
+
+    getReviews: builder.query({
+      query: () => `/reviews`,
+      providesTags: ["global"],
+    }),
   }),
 });
 
@@ -27,4 +32,5 @@ export const {
   useToggleGlobalMutation,
   useGetGlobalQuery,
   useGetCategoriesQuery,
+  useGetReviewsQuery,
 } = globalApi;

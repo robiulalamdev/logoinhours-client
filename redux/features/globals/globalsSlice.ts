@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   globalData: null,
   categories: [],
+  reviews: [],
 };
 
 const globalsSlice = createSlice({
@@ -16,9 +17,13 @@ const globalsSlice = createSlice({
     setCategories: (state, action) => {
       state.categories = action.payload;
     },
+    setReviews: (state, action) => {
+      state.reviews = action.payload;
+    },
   },
 });
 
-export const { setGlobalData, setCategories } = globalsSlice.actions;
+export const { setGlobalData, setCategories, setReviews } =
+  globalsSlice.actions;
 
 export default globalsSlice.reducer;
