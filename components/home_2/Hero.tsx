@@ -11,6 +11,7 @@ const Hero = ({ data }) => {
   const { viewImg } = useViewImage();
   const [isOpen, setOpen] = useState(false);
   // console.log(data);
+
   return (
     <Swiper
       dir="ltr"
@@ -41,6 +42,7 @@ const Hero = ({ data }) => {
       {data?.banners?.map((item: any, index: number) => (
         <SwiperSlide>
           <div
+            key={index}
             className="swiper-slide hero-slider-1__slide hero-slider-1__slide-3"
             style={{ backgroundImage: `url(${viewImg(item)})` }}
           >

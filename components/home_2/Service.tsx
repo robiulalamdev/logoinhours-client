@@ -7,7 +7,7 @@ const Service = ({ data }) => {
   const { categories } = useSelector((state: any) => state.global);
   const { viewImg } = useViewImage();
 
-  console.log(categories);
+  // console.log(categories);
   return (
     <section className="section">
       <div className="section__gap-bottom">

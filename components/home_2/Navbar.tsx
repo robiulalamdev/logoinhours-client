@@ -23,12 +23,15 @@ import {
 import useViewImage from "@/lib/hooks/useViewImage";
 import { useGetHomeQuery } from "@/redux/features/home/homeApi";
 import { setHomeData } from "@/redux/features/home/homeSlice";
+import { useGetAllSpQuery } from "@/redux/features/subPage/subPageApi";
 
 const Navbar = () => {
   const { data, isLoading } = useGetGlobalQuery(null);
   const { data: homeData } = useGetHomeQuery(null);
   const { data: categoryData } = useGetCategoriesQuery(null);
   const { data: reviewData } = useGetReviewsQuery(null);
+  const { data: spData } = useGetAllSpQuery(null);
+
   const { globalData } = useSelector((state: any) => state.global);
   const { viewImg } = useViewImage();
   const [mounted, setMounted] = useState(false);
@@ -69,6 +72,8 @@ const Navbar = () => {
   if (!mounted) {
     return null;
   }
+
+  console.log(spData);
   return (
     <>
       <Mobilemenu />
@@ -269,9 +274,23 @@ const Navbar = () => {
                   <li>
                     <Link href="#" className="primary-menu__link has-sub">
                       {" "}
-                      Home{" "}
+                      Pages{" "}
                     </Link>
-                    <ul className="list sub-menu">
+                    {spData?.data?.length > 0 && (
+                      <ul className="list sub-menu">
+                        {spData?.data.map((sp: any, index: number) => (
+                          <li>
+                            <Link
+                              href={`/sp/${sp?.slug}`}
+                              className="sub-menu__link"
+                            >
+                              {sp?.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {/* <ul className="list sub-menu">
                       <li>
                         <Link href="/" className="sub-menu__link">
                           {" "}
@@ -296,7 +315,7 @@ const Navbar = () => {
                           Home 4{" "}
                         </Link>
                       </li>
-                    </ul>
+                    </ul> */}
                   </li>
                   <li>
                     <Link href="#" className="primary-menu__link has-sub">
