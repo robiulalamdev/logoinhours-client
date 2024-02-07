@@ -33,11 +33,12 @@ const WorkProcess = ({ data }) => {
             {data?.process_1 && (
               <div className="col-sm-6 col-lg-3">
                 <div className="process-card-2 process-card-2--1 text-center">
-                  <div className="process-card-2__icon">
+                  <div className="process-card-2__icon ">
                     <img
                       src={viewImg(data?.process_1?.icon)}
                       alt="image"
                       className="img-fluid"
+                      style={{ objectFit: "contain", maxWidth: "80px" }}
                     />
                     <span className="process-card-2__notification"> 01 </span>
                   </div>
@@ -55,6 +56,7 @@ const WorkProcess = ({ data }) => {
                       src={viewImg(data?.process_2?.icon)}
                       alt="image"
                       className="img-fluid"
+                      style={{ objectFit: "contain", maxWidth: "80px" }}
                     />
                     <span className="process-card-2__notification"> 02 </span>
                   </div>
@@ -72,6 +74,7 @@ const WorkProcess = ({ data }) => {
                       src={viewImg(data?.process_3?.icon)}
                       alt="image"
                       className="img-fluid"
+                      style={{ objectFit: "contain", maxWidth: "80px" }}
                     />
                     <span className="process-card-2__notification"> 03 </span>
                   </div>
@@ -89,6 +92,7 @@ const WorkProcess = ({ data }) => {
                       src={viewImg(data?.process_4?.icon)}
                       alt="image"
                       className="img-fluid"
+                      style={{ objectFit: "contain", maxWidth: "80px" }}
                     />
                     <span className="process-card-2__notification"> 04 </span>
                   </div>
