@@ -22,6 +22,7 @@ const Footer = () => {
                   src={viewImg(globalData?.logo)}
                   alt="image"
                   className="logo__img"
+                  style={{ objectFit: "contain", width: "100px" }}
                 />
               </Link>
               <p className="clr-light t-short-para">

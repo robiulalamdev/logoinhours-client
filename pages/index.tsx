@@ -86,9 +86,9 @@ export default function Home() {
       )}
 
       {/* <!-- Service Section  --> */}
-      {homeData?.complete_projects && (
+      {/* {homeData?.complete_projects && (
         <ServiceTab data={homeData?.complete_projects} />
-      )}
+      )} */}
       {homeData?.work_process && <WorkProcess data={homeData?.work_process} />}
 
       {/* <!-- Pricing Section  --> */}
