@@ -36,11 +36,10 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  console.log(homeData);
   return (
     <>
       <Head>
-        <title>Itechex - IT Solution & Services HTML Template</title>
+        <title>Logo in hour - IT Solution & Services HTML Template</title>
         <meta
           name="description"
           content=" IT Solution & Services HTML Template"

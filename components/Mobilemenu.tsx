@@ -1,4 +1,5 @@
 import useViewImage from "@/lib/hooks/useViewImage";
+import { useGetPagesQuery } from "@/redux/features/pages/pagesApi";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState } from "react";
@@ -18,6 +19,8 @@ const Mobilemenu = () => {
     document.body.classList.toggle("mobile-menu--toggle");
   };
 
+  const { data: pagesData } = useGetPagesQuery(null);
+
   const [activeMenu, setActiveMenu] = useState("");
 
   const clickHandler = (e: any) => {
@@ -35,6 +38,7 @@ const Mobilemenu = () => {
             src={viewImg(globalData?.logo)}
             alt="image"
             className="mobile-menu__logo-img"
+            style={{ maxWidth: "60px" }}
           />
         </Link>
         <button className="mobile-menu__close" onClick={openMobileMenu}>
@@ -71,9 +75,46 @@ const Mobilemenu = () => {
         </div>
         <div className="mobile-menu__center">
           <ul className="list mobile-menu__list">
-            <li className={`${activeMenu == "Home" && "is-active"}`}>
+            <Link href="/" className="mobile-menu__link">
+              Home
+            </Link>
+
+            {pagesData?.data?.length > 0 && (
+              <>
+                {pagesData?.data?.map((page: any, index: number) => (
+                  <li>
+                    <Link
+                      onClick={clickHandler}
+                      key={index}
+                      href="#"
+                      className="mobile-menu__link has-sub"
+                    >
+                      {page?.name}
+                    </Link>
+                    <ul
+                      className={`list mobile-menu__sub ${
+                        activeMenu == page?.name && "d-block"
+                      }`}
+                    >
+                      {page?.subPages?.map((subPage: any, i: number) => (
+                        <li>
+                          <Link
+                            className="mobile-menu__sub-link"
+                            href={`/${page?.slug}/${subPage?.slug}/`}
+                          >
+                            {subPage?.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </>
+            )}
+
+            {/* <li className={``}>
               <Link
-                href="#"
+                href="/"
                 className="mobile-menu__link has-sub"
                 onClick={clickHandler}
               >
@@ -94,39 +135,9 @@ const Mobilemenu = () => {
                     Home 1{" "}
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/home-2"
-                    className="mobile-menu__sub-link"
-                    onClick={openMobileMenu}
-                  >
-                    {" "}
-                    Home 2{" "}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/home-3"
-                    className="mobile-menu__sub-link"
-                    onClick={openMobileMenu}
-                  >
-                    {" "}
-                    Home 3{" "}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/home-4"
-                    className="mobile-menu__sub-link"
-                    onClick={openMobileMenu}
-                  >
-                    {" "}
-                    Home 4{" "}
-                  </Link>
-                </li>
               </ul>
-            </li>
-            <li className={`${activeMenu == "Blog" && "is-active"}`}>
+            </li> */}
+            {/* <li className={`${activeMenu == "Blog" && "is-active"}`}>
               <Link
                 href="#"
                 onClick={clickHandler}
@@ -376,7 +387,7 @@ const Mobilemenu = () => {
                   </Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="mobile-menu__end">

@@ -8,7 +8,11 @@ const useViewImage = () => {
           new Blob([img], { type: "application/octet-stream" })
         );
       } else {
-        return `${BASE_URL}/uploads/${img}`;
+        if (img?.startsWith("http")) {
+          return img;
+        } else {
+          return `${BASE_URL}/uploads/${img}`;
+        }
       }
     }
   };

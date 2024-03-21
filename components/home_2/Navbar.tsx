@@ -24,6 +24,7 @@ import useViewImage from "@/lib/hooks/useViewImage";
 import { useGetHomeQuery } from "@/redux/features/home/homeApi";
 import { setHomeData } from "@/redux/features/home/homeSlice";
 import { useGetAllSpQuery } from "@/redux/features/subPage/subPageApi";
+import { useGetPagesQuery } from "@/redux/features/pages/pagesApi";
 
 const Navbar = () => {
   const { data, isLoading } = useGetGlobalQuery(null);
@@ -31,6 +32,8 @@ const Navbar = () => {
   const { data: categoryData } = useGetCategoriesQuery(null);
   const { data: reviewData } = useGetReviewsQuery(null);
   const { data: spData } = useGetAllSpQuery(null);
+  const { data: pagesData } = useGetPagesQuery(null);
+  // console.log(pagesData);
 
   const { globalData } = useSelector((state: any) => state.global);
   const { viewImg } = useViewImage();
@@ -73,7 +76,7 @@ const Navbar = () => {
     return null;
   }
 
-  console.log(spData);
+  // console.log(spData);
   return (
     <>
       <Mobilemenu />
@@ -271,7 +274,10 @@ const Navbar = () => {
                 </Link>
                 {/* <!-- Logo End --> */}
                 <ul className="list primary-menu__list">
-                  <li>
+                  <Link href="/" className="primary-menu__link">
+                    Home
+                  </Link>
+                  {/* <li>
                     <Link href="#" className="primary-menu__link has-sub">
                       {" "}
                       Pages{" "}
@@ -290,77 +296,40 @@ const Navbar = () => {
                         ))}
                       </ul>
                     )}
-                    {/* <ul className="list sub-menu">
-                      <li>
-                        <Link href="/" className="sub-menu__link">
-                          {" "}
-                          Home 1{" "}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/home-2" className="sub-menu__link">
-                          {" "}
-                          Home 2{" "}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/home-3" className="sub-menu__link">
-                          {" "}
-                          Home 3{" "}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/home-4" className="sub-menu__link">
-                          {" "}
-                          Home 4{" "}
-                        </Link>
-                      </li>
-                    </ul> */}
-                  </li>
-                  <li>
-                    <Link href="#" className="primary-menu__link has-sub">
-                      {" "}
-                      Blog{" "}
-                    </Link>
-                    <ul className="list sub-menu">
-                      <li>
-                        <Link href="blog-page-1" className="sub-menu__link">
-                          {" "}
-                          Blog Page{" "}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="blog-details-1" className="sub-menu__link">
-                          {" "}
-                          Blog details{" "}
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <Link href="#" className="primary-menu__link has-sub">
-                      {" "}
-                      Service{" "}
-                    </Link>
-                    <ul className="list sub-menu">
-                      <li>
-                        <Link href="service-1" className="sub-menu__link">
-                          {" "}
-                          Service Page{" "}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="service-details-1"
-                          className="sub-menu__link"
-                        >
-                          {" "}
-                          Service details{" "}
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
+                  </li> */}
+                  {pagesData?.data?.length > 0 && (
+                    <>
+                      {pagesData?.data?.map((page: any, index: number) => (
+                        <li>
+                          <Link
+                            key={index}
+                            href="#"
+                            className="primary-menu__link has-sub"
+                          >
+                            {page?.name}
+                          </Link>
+                          <ul className="list sub-menu">
+                            {page?.subPages?.map((subPage: any, i: number) => (
+                              <li key={i}>
+                                <Link
+                                  href={`/${page?.slug}/${subPage?.slug}/`}
+                                  className="sub-menu__link"
+                                >
+                                  {subPage?.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      ))}
+                    </>
+                  )}
+
+                  <Link href="/about-us" className="primary-menu__link">
+                    About us
+                  </Link>
+
+                  {/* <li>
                     <Link href="contact-us-1" className="primary-menu__link">
                       {" "}
                       Contact Us{" "}
@@ -558,7 +527,7 @@ const Navbar = () => {
                       {" "}
                       Free Quote{" "}
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </nav>
               {/* <!-- Primary Menu End --> */}

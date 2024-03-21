@@ -1,35 +1,42 @@
 import Team from "@/components/home_1/Team";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {Autoplay, EffectFade, Navigation, Pagination} from 'swiper';
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import Feedback_2 from "@/components/Feedback_2";
 import Videosection from "@/components/Videosection";
-import { useEffect } from 'react';
-import Navbar from "@/components/Navbar";
+import { useEffect } from "react";
 import Footer from "@/components/home_4/Footer";
+import Navbar from "@/components/home_2/Navbar";
 
 const about_us_1 = () => {
-    const handleMouseOver = (event:any) => {
-        const target = event.currentTarget;
-        target.classList.add('active');
-        const siblings = Array.from(target.parentNode.children).filter(
-          (element) => element !== target
-        );
-        siblings.forEach((element:any) => {
-          element.classList.remove('active');
-        });
-      };
-      const valueSliderStep = ['<span class="d-inline-block clr-base me-2">01</span> People <span class="value-slider__circle value-slider__circle-1"></span>', '<span class="d-inline-block clr-base me-2">02</span> Growth <span class="value-slider__circle value-slider__circle-2"></span>', '<span class="d-inline-block clr-base me-2">03</span> Responsibility <span class="value-slider__circle value-slider__circle-3"></span>', '<span class="d-inline-block clr-base me-2">04</span> Fullfilment <span class="value-slider__circle value-slider__circle-4"></span>', '<span class="d-inline-block clr-base me-2">05</span> Fair Play <span class="value-slider__circle value-slider__circle-5"></span>', '<span class="d-inline-block clr-base me-2">06</span> Opennes <span class="value-slider__circle value-slider__circle-6"></span>'] 
-      useEffect(() => {
-        document.documentElement.setAttribute("dir", 'ltr');
-      },[])
-      return (
+  const handleMouseOver = (event: any) => {
+    const target = event.currentTarget;
+    target.classList.add("active");
+    const siblings = Array.from(target.parentNode.children).filter(
+      (element) => element !== target
+    );
+    siblings.forEach((element: any) => {
+      element.classList.remove("active");
+    });
+  };
+  const valueSliderStep = [
+    '<span class="d-inline-block clr-base me-2">01</span> People <span class="value-slider__circle value-slider__circle-1"></span>',
+    '<span class="d-inline-block clr-base me-2">02</span> Growth <span class="value-slider__circle value-slider__circle-2"></span>',
+    '<span class="d-inline-block clr-base me-2">03</span> Responsibility <span class="value-slider__circle value-slider__circle-3"></span>',
+    '<span class="d-inline-block clr-base me-2">04</span> Fullfilment <span class="value-slider__circle value-slider__circle-4"></span>',
+    '<span class="d-inline-block clr-base me-2">05</span> Fair Play <span class="value-slider__circle value-slider__circle-5"></span>',
+    '<span class="d-inline-block clr-base me-2">06</span> Opennes <span class="value-slider__circle value-slider__circle-6"></span>',
+  ];
+  useEffect(() => {
+    document.documentElement.setAttribute("dir", "ltr");
+  }, []);
+  return (
     <>
-      <Navbar rtlurl="/rtl/about-us-1"/>
+      <Navbar />
       {/* Banner Section */}
       <section className="banner-section section--sm">
         <div className="container">
@@ -40,7 +47,8 @@ const about_us_1 = () => {
                 <li>
                   <Link
                     href="/"
-                    className="d-inline-block t-link clr-light :clr-accent">
+                    className="d-inline-block t-link clr-light :clr-accent"
+                  >
                     {" "}
                     Home{" "}
                   </Link>
@@ -48,7 +56,8 @@ const about_us_1 = () => {
                 <li className="">
                   <Link
                     href="#"
-                    className="d-inline-block t-link clr-light :clr-accent">
+                    className="d-inline-block t-link clr-light :clr-accent"
+                  >
                     {" "}
                     About Us_02{" "}
                   </Link>
@@ -56,12 +65,14 @@ const about_us_1 = () => {
                 <li className="d-none">
                   <Link
                     href="#"
-                    className="d-inline-block t-link clr-light :clr-accent"></Link>
+                    className="d-inline-block t-link clr-light :clr-accent"
+                  ></Link>
                 </li>
                 <li className="d-none">
                   <Link
                     href="#"
-                    className="d-inline-block t-link clr-light :clr-accent"></Link>
+                    className="d-inline-block t-link clr-light :clr-accent"
+                  ></Link>
                 </li>
               </ul>
             </div>
@@ -98,7 +109,8 @@ const about_us_1 = () => {
                 </p>
                 <Link
                   href="contact-us-1"
-                  className="bttn bttn--base bttn-md bttn-pill gap-2 fw-md flex-shrink-0">
+                  className="bttn bttn--base bttn-md bttn-pill gap-2 fw-md flex-shrink-0"
+                >
                   {" "}
                   Let’s work together{" "}
                   <span className="material-symbols-rounded mat-icon size-16 fw-400 bttn__icon-cover d-flex align-items-center">
@@ -137,78 +149,78 @@ const about_us_1 = () => {
         <div className="row g-0">
           <div className="col-12">
             <Swiper
-            dir="ltr"
-            slidesPerView="auto"
-            centeredSlides={true}
-            spaceBetween={24}
-            loop={true}
-            centeredSlidesBounds={true}
-            autoplay={{
+              dir="ltr"
+              slidesPerView="auto"
+              centeredSlides={true}
+              spaceBetween={24}
+              loop={true}
+              centeredSlidesBounds={true}
+              autoplay={{
                 delay: 6000,
-                disableOnInteraction: false
-            }}
-            speed={4000}
-            breakpoints={{
+                disableOnInteraction: false,
+              }}
+              speed={4000}
+              breakpoints={{
                 768: {
-                    slidesPerView: 1.5,
-                    spaceBetween: 16,
-                  },
-                  1200: {
-                    slidesPerView: 2.5,
-                    spaceBetween: 32,
-                  },
-                  1920: {
-                    slidesPerView: 3.5
-                  }
-            }}
-            modules={[Autoplay]}
-            className="gallery-slider-1"
-            >           
-                <SwiperSlide>
-                  <div className="gallery-slider-1__item">
-                    <img
-                      src="/images/gallery-slider-1.png"
-                      alt="image"
-                      className="img-fluid"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="gallery-slider-1__item">
-                    <img
-                      src="/images/gallery-slider-2.png"
-                      alt="image"
-                      className="img-fluid"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="gallery-slider-1__item">
-                    <img
-                      src="/images/gallery-slider-3.png"
-                      alt="image"
-                      className="img-fluid"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="gallery-slider-1__item">
-                    <img
-                      src="/images/gallery-slider-4.png"
-                      alt="image"
-                      className="img-fluid"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="gallery-slider-1__item">
-                    <img
-                      src="/images/gallery-slider-5.png"
-                      alt="image"
-                      className="img-fluid"
-                    />
-                  </div>
-                </SwiperSlide>           
+                  slidesPerView: 1.5,
+                  spaceBetween: 16,
+                },
+                1200: {
+                  slidesPerView: 2.5,
+                  spaceBetween: 32,
+                },
+                1920: {
+                  slidesPerView: 3.5,
+                },
+              }}
+              modules={[Autoplay]}
+              className="gallery-slider-1"
+            >
+              <SwiperSlide>
+                <div className="gallery-slider-1__item">
+                  <img
+                    src="/images/gallery-slider-1.png"
+                    alt="image"
+                    className="img-fluid"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="gallery-slider-1__item">
+                  <img
+                    src="/images/gallery-slider-2.png"
+                    alt="image"
+                    className="img-fluid"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="gallery-slider-1__item">
+                  <img
+                    src="/images/gallery-slider-3.png"
+                    alt="image"
+                    className="img-fluid"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="gallery-slider-1__item">
+                  <img
+                    src="/images/gallery-slider-4.png"
+                    alt="image"
+                    className="img-fluid"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="gallery-slider-1__item">
+                  <img
+                    src="/images/gallery-slider-5.png"
+                    alt="image"
+                    className="img-fluid"
+                  />
+                </div>
+              </SwiperSlide>
             </Swiper>
           </div>
         </div>
@@ -309,7 +321,10 @@ const about_us_1 = () => {
           <div className="row g-0">
             <div className="col-12">
               <div className="year-review">
-                <div onMouseOver={handleMouseOver} className="year-review__column">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column"
+                >
                   <div className="year-review__year"> 2010 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -348,7 +363,10 @@ const about_us_1 = () => {
                     </div>
                   </div>
                 </div>
-                <div onMouseOver={handleMouseOver} className="year-review__column">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column"
+                >
                   <div className="year-review__year"> 2011 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -387,7 +405,10 @@ const about_us_1 = () => {
                     </div>
                   </div>
                 </div>
-                <div onMouseOver={handleMouseOver} className="year-review__column">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column"
+                >
                   <div className="year-review__year"> 2012 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -426,7 +447,10 @@ const about_us_1 = () => {
                     </div>
                   </div>
                 </div>
-                <div onMouseOver={handleMouseOver} className="year-review__column">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column"
+                >
                   <div className="year-review__year"> 2013 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -465,7 +489,10 @@ const about_us_1 = () => {
                     </div>
                   </div>
                 </div>
-                <div onMouseOver={handleMouseOver} className="year-review__column">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column"
+                >
                   <div className="year-review__year"> 2014 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -504,7 +531,10 @@ const about_us_1 = () => {
                     </div>
                   </div>
                 </div>
-                <div onMouseOver={handleMouseOver} className="year-review__column active">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column active"
+                >
                   <div className="year-review__year"> 2015 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -543,7 +573,10 @@ const about_us_1 = () => {
                     </div>
                   </div>
                 </div>
-                <div onMouseOver={handleMouseOver} className="year-review__column ">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column "
+                >
                   <div className="year-review__year"> 2016 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -582,7 +615,10 @@ const about_us_1 = () => {
                     </div>
                   </div>
                 </div>
-                <div onMouseOver={handleMouseOver} className="year-review__column">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column"
+                >
                   <div className="year-review__year"> 2017 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -621,7 +657,10 @@ const about_us_1 = () => {
                     </div>
                   </div>
                 </div>
-                <div onMouseOver={handleMouseOver} className="year-review__column">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column"
+                >
                   <div className="year-review__year"> 2018 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -660,7 +699,10 @@ const about_us_1 = () => {
                     </div>
                   </div>
                 </div>
-                <div onMouseOver={handleMouseOver} className="year-review__column">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column"
+                >
                   <div className="year-review__year"> 2019 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -699,7 +741,10 @@ const about_us_1 = () => {
                     </div>
                   </div>
                 </div>
-                <div onMouseOver={handleMouseOver} className="year-review__column">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column"
+                >
                   <div className="year-review__year"> 2020 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -738,7 +783,10 @@ const about_us_1 = () => {
                     </div>
                   </div>
                 </div>
-                <div onMouseOver={handleMouseOver} className="year-review__column">
+                <div
+                  onMouseOver={handleMouseOver}
+                  className="year-review__column"
+                >
                   <div className="year-review__year"> 2021 </div>
                   <div className="year-review__content">
                     <div className="year-review__content-body">
@@ -813,201 +861,212 @@ const about_us_1 = () => {
                   <div className="swiper-pagination"></div>
                 </div>
                 <Swiper
-                dir="ltr"
-                slidesPerView={1}
-                autoplay={false}
-                speed={1000}
-                pagination={{
+                  dir="ltr"
+                  slidesPerView={1}
+                  autoplay={false}
+                  speed={1000}
+                  pagination={{
                     el: ".value-slider-container .swiper-pagination",
                     clickable: true,
                     renderBullet: function (index, className) {
-                      return '<span class="' + className + '">' + (valueSliderStep[index]) + "</span>";
-                    }  
-                }}
-                navigation={{
+                      return (
+                        '<span class="' +
+                        className +
+                        '">' +
+                        valueSliderStep[index] +
+                        "</span>"
+                      );
+                    },
+                  }}
+                  navigation={{
                     nextEl: ".value-slider-container .swiper-button-next",
-                    prevEl: ".value-slider-container .swiper-button-prev" 
-                }}
-                effect="fade"
-                fadeEffect={{
-                    crossFade:false
-                }}
-                onInit={(swiper) => {
+                    prevEl: ".value-slider-container .swiper-button-prev",
+                  }}
+                  effect="fade"
+                  fadeEffect={{
+                    crossFade: false,
+                  }}
+                  onInit={(swiper) => {
                     const bullets = swiper.pagination.bullets;
-                    const valueFraction = document.querySelector('.value-slider__fraction');
+                    const valueFraction = document.querySelector(
+                      ".value-slider__fraction"
+                    );
                     if (valueFraction) {
                       valueFraction.innerHTML = `1 / ${bullets.length}`;
                     }
-                }}
-                onSlideChange={(swiper) => {
+                  }}
+                  onSlideChange={(swiper) => {
                     const bullets = swiper.pagination.bullets;
-                    const activeIndex = document.querySelector('.swiper-pagination-bullet-active .clr-base');
-                    const finalIndex = activeIndex ? Number(activeIndex.textContent).toString() : '';
-                    const valueFraction = document.querySelector('.value-slider__fraction');
+                    const activeIndex = document.querySelector(
+                      ".swiper-pagination-bullet-active .clr-base"
+                    );
+                    const finalIndex = activeIndex
+                      ? Number(activeIndex.textContent).toString()
+                      : "";
+                    const valueFraction = document.querySelector(
+                      ".value-slider__fraction"
+                    );
                     if (valueFraction) {
                       valueFraction.innerHTML = `${finalIndex} / ${bullets.length}`;
                     }
                   }}
-                modules={[Navigation, EffectFade, Pagination]}
-                className="value-slider"
+                  modules={[Navigation, EffectFade, Pagination]}
+                  className="value-slider"
                 >
-                  
-                    {/* <!-- Slides --> */}
-                    <SwiperSlide>
-                      <div className="value-slider__slide section--sm section--bottom">
-                        <div className="row g-4 justify-content-xl-between align-items-lg-center">
-                          <div className="col-lg-6 col-xl-7">
-                            <div className="section__gap-bottom pb-lg-0">
-                              <img
-                                src="/images/value-slide-1.png"
-                                alt="image"
-                                className="value-slider__img"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-xl-4">
-                            <h3 className="mb-5 clr-light"> People </h3>
-                            <p className="clr-light">
-                              {" "}
-                              They’re the greatest asset that The Software House
-                              is built on. We work with them and for them,
-                              making sure they feel fulfilled, appreciated, and
-                              satisfied.{" "}
-                            </p>
+                  {/* <!-- Slides --> */}
+                  <SwiperSlide>
+                    <div className="value-slider__slide section--sm section--bottom">
+                      <div className="row g-4 justify-content-xl-between align-items-lg-center">
+                        <div className="col-lg-6 col-xl-7">
+                          <div className="section__gap-bottom pb-lg-0">
+                            <img
+                              src="/images/value-slide-1.png"
+                              alt="image"
+                              className="value-slider__img"
+                            />
                           </div>
                         </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="value-slider__slide section--sm section--bottom">
-                        <div className="row g-4 justify-content-xl-between align-items-lg-center">
-                          <div className="col-lg-6 col-xl-7">
-                            <div className="section__gap-bottom pb-lg-0">
-                              <img
-                                src="/images/value-slide-2.png"
-                                alt="image"
-                                className="value-slider__img"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-xl-4">
-                            <h3 className="mb-5 clr-light"> Openness </h3>
-                            <p className="clr-light">
-                              {" "}
-                              We welcome new ideas and challenges that await us.
-                              Keeping a broad perspective on the future, we spot
-                              potential and real problems ahead of time, with
-                              which we deal promptly. The openness to one
-                              another drives our client and colleague relations.{" "}
-                            </p>
-                          </div>
+                        <div className="col-lg-6 col-xl-4">
+                          <h3 className="mb-5 clr-light"> People </h3>
+                          <p className="clr-light">
+                            {" "}
+                            They’re the greatest asset that The Software House
+                            is built on. We work with them and for them, making
+                            sure they feel fulfilled, appreciated, and
+                            satisfied.{" "}
+                          </p>
                         </div>
                       </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="value-slider__slide section--sm section--bottom">
-                        <div className="row g-4 justify-content-xl-between align-items-lg-center">
-                          <div className="col-lg-6 col-xl-7">
-                            <div className="section__gap-bottom pb-lg-0">
-                              <img
-                                src="/images/value-slide-3.png"
-                                alt="image"
-                                className="value-slider__img"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-xl-4">
-                            <h3 className="mb-5 clr-light"> Fair play </h3>
-                            <p className="clr-light">
-                              {" "}
-                              We strive to make decisions that are fair to all
-                              sides. Our employees get adequate praise for their
-                              efforts and compensation for their skills.
-                              Similarly, our clients see prices that are
-                              adequate to our involvement and work quality.{" "}
-                            </p>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div className="value-slider__slide section--sm section--bottom">
+                      <div className="row g-4 justify-content-xl-between align-items-lg-center">
+                        <div className="col-lg-6 col-xl-7">
+                          <div className="section__gap-bottom pb-lg-0">
+                            <img
+                              src="/images/value-slide-2.png"
+                              alt="image"
+                              className="value-slider__img"
+                            />
                           </div>
                         </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="value-slider__slide section--sm section--bottom">
-                        <div className="row g-4 justify-content-xl-between align-items-lg-center">
-                          <div className="col-lg-6 col-xl-7">
-                            <div className="section__gap-bottom pb-lg-0">
-                              <img
-                                src="/images/value-slide-4.png"
-                                alt="image"
-                                className="value-slider__img"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-xl-4">
-                            <h3 className="mb-5 clr-light"> Fulfilment </h3>
-                            <p className="clr-light">
-                              {" "}
-                              Being fulfilled by our work keeps us energized. We
-                              create first-class software that’s fast,
-                              efficient, and ready to scale because we want us
-                              and our clients to be proud of our work.{" "}
-                            </p>
-                          </div>
+                        <div className="col-lg-6 col-xl-4">
+                          <h3 className="mb-5 clr-light"> Openness </h3>
+                          <p className="clr-light">
+                            {" "}
+                            We welcome new ideas and challenges that await us.
+                            Keeping a broad perspective on the future, we spot
+                            potential and real problems ahead of time, with
+                            which we deal promptly. The openness to one another
+                            drives our client and colleague relations.{" "}
+                          </p>
                         </div>
                       </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="value-slider__slide section--sm section--bottom">
-                        <div className="row g-4 justify-content-xl-between align-items-lg-center">
-                          <div className="col-lg-6 col-xl-7">
-                            <div className="section__gap-bottom pb-lg-0">
-                              <img
-                                src="/images/value-slide-1.png"
-                                alt="image"
-                                className="value-slider__img"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-xl-4">
-                            <h3 className="mb-5 clr-light"> Responsibility </h3>
-                            <p className="clr-light">
-                              {" "}
-                              To ensure of our clients’ success, we bring in
-                              knowledge, technology skills, and high engagement
-                              to each project. Our communication remains open
-                              for all partners regardless of their continent,
-                              culture, or time zone.{" "}
-                            </p>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div className="value-slider__slide section--sm section--bottom">
+                      <div className="row g-4 justify-content-xl-between align-items-lg-center">
+                        <div className="col-lg-6 col-xl-7">
+                          <div className="section__gap-bottom pb-lg-0">
+                            <img
+                              src="/images/value-slide-3.png"
+                              alt="image"
+                              className="value-slider__img"
+                            />
                           </div>
                         </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="value-slider__slide section--sm section--bottom">
-                        <div className="row g-4 justify-content-xl-between align-items-lg-center">
-                          <div className="col-lg-6 col-xl-7">
-                            <div className="section__gap-bottom pb-lg-0">
-                              <img
-                                src="/images/value-slide-2.png"
-                                alt="image"
-                                className="value-slider__img"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-xl-4">
-                            <h3 className="mb-5 clr-light"> Growth </h3>
-                            <p className="clr-light">
-                              {" "}
-                              We aim high, always learning, to understand every
-                              novelty from the world of technology. We support
-                              our employees’ learning and practicing so that
-                              they can deliver top-class solutions in ambitious
-                              projects.{" "}
-                            </p>
-                          </div>
+                        <div className="col-lg-6 col-xl-4">
+                          <h3 className="mb-5 clr-light"> Fair play </h3>
+                          <p className="clr-light">
+                            {" "}
+                            We strive to make decisions that are fair to all
+                            sides. Our employees get adequate praise for their
+                            efforts and compensation for their skills.
+                            Similarly, our clients see prices that are adequate
+                            to our involvement and work quality.{" "}
+                          </p>
                         </div>
                       </div>
-                    </SwiperSlide>
-                 
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div className="value-slider__slide section--sm section--bottom">
+                      <div className="row g-4 justify-content-xl-between align-items-lg-center">
+                        <div className="col-lg-6 col-xl-7">
+                          <div className="section__gap-bottom pb-lg-0">
+                            <img
+                              src="/images/value-slide-4.png"
+                              alt="image"
+                              className="value-slider__img"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-xl-4">
+                          <h3 className="mb-5 clr-light"> Fulfilment </h3>
+                          <p className="clr-light">
+                            {" "}
+                            Being fulfilled by our work keeps us energized. We
+                            create first-class software that’s fast, efficient,
+                            and ready to scale because we want us and our
+                            clients to be proud of our work.{" "}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div className="value-slider__slide section--sm section--bottom">
+                      <div className="row g-4 justify-content-xl-between align-items-lg-center">
+                        <div className="col-lg-6 col-xl-7">
+                          <div className="section__gap-bottom pb-lg-0">
+                            <img
+                              src="/images/value-slide-1.png"
+                              alt="image"
+                              className="value-slider__img"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-xl-4">
+                          <h3 className="mb-5 clr-light"> Responsibility </h3>
+                          <p className="clr-light">
+                            {" "}
+                            To ensure of our clients’ success, we bring in
+                            knowledge, technology skills, and high engagement to
+                            each project. Our communication remains open for all
+                            partners regardless of their continent, culture, or
+                            time zone.{" "}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div className="value-slider__slide section--sm section--bottom">
+                      <div className="row g-4 justify-content-xl-between align-items-lg-center">
+                        <div className="col-lg-6 col-xl-7">
+                          <div className="section__gap-bottom pb-lg-0">
+                            <img
+                              src="/images/value-slide-2.png"
+                              alt="image"
+                              className="value-slider__img"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-xl-4">
+                          <h3 className="mb-5 clr-light"> Growth </h3>
+                          <p className="clr-light">
+                            {" "}
+                            We aim high, always learning, to understand every
+                            novelty from the world of technology. We support our
+                            employees’ learning and practicing so that they can
+                            deliver top-class solutions in ambitious projects.{" "}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
                 </Swiper>
                 <div className="value-slider__control">
                   <div className="value-slider__fraction"></div>

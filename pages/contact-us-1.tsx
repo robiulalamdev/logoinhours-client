@@ -3,7 +3,7 @@ import Testimonial_slider_1 from "@/components/Testimonial-slider-1";
 import Footer from "@/components/home_4/Footer";
 import Link from "next/link";
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 const contact_us_1 = () => {
   useEffect(() => {
@@ -22,7 +22,8 @@ const contact_us_1 = () => {
                 <li>
                   <Link
                     href="/"
-                    className="d-inline-block t-link clr-light :clr-accent">
+                    className="d-inline-block t-link clr-light :clr-accent"
+                  >
                     {" "}
                     Home{" "}
                   </Link>
@@ -30,7 +31,8 @@ const contact_us_1 = () => {
                 <li className="">
                   <Link
                     href="#"
-                    className="d-inline-block t-link clr-light :clr-accent">
+                    className="d-inline-block t-link clr-light :clr-accent"
+                  >
                     {" "}
                     Contact Us{" "}
                   </Link>
@@ -38,12 +40,14 @@ const contact_us_1 = () => {
                 <li className="d-none">
                   <Link
                     href="#"
-                    className="d-inline-block t-link clr-light :clr-accent"></Link>
+                    className="d-inline-block t-link clr-light :clr-accent"
+                  ></Link>
                 </li>
                 <li className="d-none">
                   <Link
                     href="#"
-                    className="d-inline-block t-link clr-light :clr-accent"></Link>
+                    className="d-inline-block t-link clr-light :clr-accent"
+                  ></Link>
                 </li>
               </ul>
             </div>
@@ -80,7 +84,8 @@ const contact_us_1 = () => {
             <div className="col-lg-6">
               <form
                 action="#"
-                className="contact-form-1 bg-base p-5 py-md-10 rounded-4">
+                className="contact-form-1 bg-base p-5 py-md-10 rounded-4"
+              >
                 <div className="row g-4">
                   <div className="col-md-6">
                     <input
@@ -124,7 +129,8 @@ const contact_us_1 = () => {
                     <textarea
                       className="form-control contact-form-1__input rounded-8"
                       rows={3}
-                      placeholder="Let us know"></textarea>
+                      placeholder="Let us know"
+                    ></textarea>
                   </div>
                   <div className="col-12">
                     <div className="form-check">
@@ -136,7 +142,8 @@ const contact_us_1 = () => {
                       />
                       <label
                         className="form-check-label clr-light"
-                        htmlFor="newsletter-subscribe">
+                        htmlFor="newsletter-subscribe"
+                      >
                         {" "}
                         I would like to be updated on the latest products, event
                         announcements{" "}
@@ -153,7 +160,8 @@ const contact_us_1 = () => {
                       />
                       <label
                         className="form-check-label clr-light"
-                        htmlFor="accept-terms">
+                        htmlFor="accept-terms"
+                      >
                         {" "}
                         I have read and accepted the Terms & Conditions Privacy
                         Policy{" "}
@@ -176,7 +184,8 @@ const contact_us_1 = () => {
                 <li>
                   <Link
                     href="#"
-                    className="t-link service-link clr-heading :clr-light border-bottom">
+                    className="t-link service-link clr-heading :clr-light border-bottom"
+                  >
                     <span className="group gap-1">
                       <span className="d-inline-block service-link__title fw-bold">
                         {" "}
@@ -198,7 +207,8 @@ const contact_us_1 = () => {
                 <li>
                   <Link
                     href="#"
-                    className="t-link service-link clr-heading :clr-light border-bottom">
+                    className="t-link service-link clr-heading :clr-light border-bottom"
+                  >
                     <span className="group gap-1">
                       <span className="d-inline-block service-link__title fw-bold">
                         {" "}
@@ -220,7 +230,8 @@ const contact_us_1 = () => {
                 <li>
                   <Link
                     href="#"
-                    className="t-link service-link clr-heading :clr-light">
+                    className="t-link service-link clr-heading :clr-light"
+                  >
                     <span className="group gap-1">
                       <span className="d-inline-block service-link__title fw-bold">
                         {" "}
@@ -271,7 +282,8 @@ const contact_us_1 = () => {
                 <div className="text-center">
                   <Link
                     href="contact-us-1"
-                    className="bttn bttn--base bttn-md bttn-pill gap-2 fw-md flex-shrink-0">
+                    className="bttn bttn--base bttn-md bttn-pill gap-2 fw-md flex-shrink-0"
+                  >
                     {" "}
                     Let’s Schedule a Call{" "}
                     <span className="material-symbols-rounded mat-icon size-16 fw-400 bttn__icon-cover d-flex align-items-center">

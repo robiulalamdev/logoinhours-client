@@ -71,7 +71,7 @@ const SubPageBySlug = () => {
       {/* Navbar Section */}
       <Navbar />
       {/* Hero Section */}
-      <Hero data={data?.data?.hero_section} />
+      {/* <Hero data={data?.data?.hero_section} /> */}
 
       {/* Service section */}
       <Service data={data?.data?.professional_it_services} />
@@ -84,7 +84,7 @@ const SubPageBySlug = () => {
       {data?.data?.companies && <Brand data={data?.data?.companies} />}
 
       {/* <!-- Consult Section  --> */}
-      {data?.data?.appointment && <Consult data={data?.data?.appointment} />}
+      {/* {data?.data?.appointment && <Consult data={data?.data?.appointment} />} */}
 
       {/* <!-- Features section --> */}
       {data?.data?.it_solutions && <Features data={data?.data?.it_solutions} />}
@@ -95,9 +95,9 @@ const SubPageBySlug = () => {
       )}
 
       {/* <!-- Service Section  --> */}
-      {data?.data?.complete_projects && (
+      {/* {data?.data?.complete_projects && (
         <ServiceTab data={data?.data?.complete_projects} />
-      )}
+      )} */}
       {data?.data?.work_process && (
         <WorkProcess data={data?.data?.work_process} />
       )}
@@ -110,9 +110,9 @@ const SubPageBySlug = () => {
       )}
 
       {/*  Testimonial Section  --> */}
-      {data?.data?.client_reviews && (
+      {/* {data?.data?.client_reviews && (
         <Testimonail data={data?.data?.client_reviews} />
-      )}
+      )} */}
 
       {/*  Footer --> */}
       <Footer />
