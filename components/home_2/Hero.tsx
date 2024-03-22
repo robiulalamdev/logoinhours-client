@@ -13,65 +13,67 @@ const Hero = ({ data }) => {
   // console.log(data);
 
   return (
-    <Swiper
-      dir="ltr"
-      loop={true}
-      pagination={{
-        el: ".hero-slider-1 .swiper-pagination",
-        type: "bullets",
-        clickable: true,
-      }}
-      slidesPerView={1}
-      autoplay={{
-        delay: 8000,
-        pauseOnMouseEnter: true,
-      }}
-      speed={1500}
-      autoHeight={false}
-      modules={[Pagination, Autoplay]}
-      className="hero-slider-1"
-    >
-      {/* <!-- Additional required wrapper --> */}
-      <ModalVideo
-        channel="youtube"
-        isOpen={isOpen}
-        videoId="UmHMVU6dceA"
-        onClose={() => setOpen(false)}
-      />
+    <>
+      {data?.status && (
+        <Swiper
+          dir="ltr"
+          loop={true}
+          pagination={{
+            el: ".hero-slider-1 .swiper-pagination",
+            type: "bullets",
+            clickable: true,
+          }}
+          slidesPerView={1}
+          autoplay={{
+            delay: 8000,
+            pauseOnMouseEnter: true,
+          }}
+          speed={1500}
+          autoHeight={false}
+          modules={[Pagination, Autoplay]}
+          className="hero-slider-1"
+        >
+          {/* <!-- Additional required wrapper --> */}
+          <ModalVideo
+            channel="youtube"
+            isOpen={isOpen}
+            videoId="UmHMVU6dceA"
+            onClose={() => setOpen(false)}
+          />
 
-      {data?.banners?.map((item: any, index: number) => (
-        <SwiperSlide>
-          <div
-            key={index}
-            className="swiper-slide hero-slider-1__slide hero-slider-1__slide-3"
-            style={{ backgroundImage: `url(${viewImg(item)})` }}
-          >
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-10 col-xl-7 col-xxl-8">
-                  <div className="hero-slider-1__item">
-                    <span className="d-block h4 fw-semibold clr-accent mb-5">
-                      {" "}
-                      {data?.sub_heading}
-                    </span>
-                    <h1 className="clr-light mb-5"> {data?.heading} </h1>
-                    <p className="t-short-para clr-light xl-text mb-10">
-                      {" "}
-                      {data?.heading_summary}{" "}
-                    </p>
-                    <div className="group group-sm-row align-items-start align-items-sm-center">
-                      <Link
-                        href="contact-us-1"
-                        className="bttn bttn-pill bttn-md bttn--light-outline align-items-center gap-2 fw-md clr-light"
-                      >
-                        {" "}
-                        {data?.button_title}{" "}
-                        {/* <span className="material-symbols-rounded mat-icon size-16 fw-400 bttn__icon-cover d-flex align-items-center">
+          {data?.banners?.map((item: any, index: number) => (
+            <SwiperSlide>
+              <div
+                key={index}
+                className="swiper-slide hero-slider-1__slide hero-slider-1__slide-3"
+                style={{ backgroundImage: `url(${viewImg(item)})` }}
+              >
+                <div className="container">
+                  <div className="row">
+                    <div className="col-lg-10 col-xl-7 col-xxl-8">
+                      <div className="hero-slider-1__item">
+                        <span className="d-block h4 fw-semibold clr-accent mb-5">
+                          {" "}
+                          {data?.sub_heading}
+                        </span>
+                        <h1 className="clr-light mb-5"> {data?.heading} </h1>
+                        <p className="t-short-para clr-light xl-text mb-10">
+                          {" "}
+                          {data?.heading_summary}{" "}
+                        </p>
+                        <div className="group group-sm-row align-items-start align-items-sm-center">
+                          <Link
+                            href="contact-us-1"
+                            className="bttn bttn-pill bttn-md bttn--light-outline align-items-center gap-2 fw-md clr-light"
+                          >
+                            {" "}
+                            {data?.button_title}{" "}
+                            {/* <span className="material-symbols-rounded mat-icon size-16 fw-400 bttn__icon-cover d-flex align-items-center">
                         {" "}
                         headphones{" "}
                       </span> */}
-                      </Link>
-                      {/* <div className="list list-row align-items-center flex-shrink-0">
+                          </Link>
+                          {/* <div className="list list-row align-items-center flex-shrink-0">
                       <Link
                         onClick={() => setOpen(true)}
                         href="#"
@@ -84,17 +86,17 @@ const Hero = ({ data }) => {
                       </Link>
                       <p className="clr-neutral">How we work</p>
                     </div> */}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </SwiperSlide>
-      ))}
+            </SwiperSlide>
+          ))}
 
-      {/* <!-- Slides --> */}
-      {/* <SwiperSlide>
+          {/* <!-- Slides --> */}
+          {/* <SwiperSlide>
         <div
           className="swiper-slide hero-slider-1__slide hero-slider-1__slide-1"
           style={{ backgroundImage: "url(/images/hero-slider-1-bg.png)" }}
@@ -213,7 +215,7 @@ const Hero = ({ data }) => {
         </div>
       </SwiperSlide> */}
 
-      {/* <SwiperSlide>
+          {/* <SwiperSlide>
         <div
           className="swiper-slide hero-slider-1__slide hero-slider-1__slide-3"
           style={{ backgroundImage: "url(/images/hero-slider-1-bg-3.png)" }}
@@ -264,9 +266,11 @@ const Hero = ({ data }) => {
         </div>
       </SwiperSlide> */}
 
-      {/* <!-- If we need pagination --> */}
-      <div className="swiper-pagination"></div>
-    </Swiper>
+          {/* <!-- If we need pagination --> */}
+          <div className="swiper-pagination"></div>
+        </Swiper>
+      )}
+    </>
   );
 };
 
