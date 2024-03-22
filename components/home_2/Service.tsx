@@ -7,7 +7,6 @@ const Service = ({ data }) => {
   const { categories } = useSelector((state: any) => state.global);
   const { viewImg } = useViewImage();
 
-  // console.log(categories);
   return (
     <>
       {data?.status && (
@@ -41,7 +40,7 @@ const Service = ({ data }) => {
             <>
               <div className="container">
                 <div className="row g-4 justify-content-center">
-                  {categories?.slice(0, 3)?.map((cate: any, index: number) => (
+                  {categories?.map((cate: any, index: number) => (
                     <div key={index} className="col-md-6 col-lg-4">
                       <div className="service-card service-card--1">
                         <div className="icon-box icon-box--md circle bg-base flex-shrink-0">
